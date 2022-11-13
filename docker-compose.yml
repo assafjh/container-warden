@@ -10,7 +10,9 @@ services:
       - ./vw-data:/data
     environment:
       WEBSOCKET_ENABLED: 'true' # Required to use websockets
-      SIGNUPS_ALLOWED: 'true'   # set to false to disable signups
+      SIGNUPS_ALLOWED: 'false'   # set to false to disable signups
+      # The below will enable the admin page for the server - to generate a token, use this for example: openssl rand -base64 48
+      # ADMIN_TOKEN: <some random token>
 
   caddy:
     image: caddy:2
