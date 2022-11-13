@@ -1,0 +1,27 @@
+# docker-compose.yml
+version: '3'
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: always
+    volumes:
+      - ./vw-data:/data
+    environment:
+      WEBSOCKET_ENABLED: 'true' # Required to use websockets
+      SIGNUPS_ALLOWED: 'true'   # set to false to disable signups
+
+  caddy:
+    image: caddy:2
+    container_name: caddy
+    restart: always
+    ports:
+      - 443:443
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./caddy-config:/config
+      - ./caddy-data:/data
+    environment:
+      DOMAIN: "localhost"  # Your domain.
+      LOG_FILE: "/data/access.log"
