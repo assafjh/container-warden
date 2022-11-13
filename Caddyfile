@@ -1,11 +1,12 @@
 {$DOMAIN} {
-  log {
-    level INFO
-    output file {$LOG_FILE} {
-      roll_size 10MB
-      roll_keep 10
-    }
-  }
+  # If logs are needed
+  # log {
+  #  level INFO
+  #  output file {$LOG_FILE} {
+  #    roll_size 10MB
+  #    roll_keep 10
+  #  }
+  # }
 
   # Uncomment this if you want to get a cert via ACME (Let's Encrypt or ZeroSSL).
   # tls {$EMAIL}
